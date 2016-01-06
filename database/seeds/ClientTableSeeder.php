@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use AcessoProject\Client;
+use AcessoProject\Entities\Client;
+
 class ClientTableSeeder extends Seeder
 {
     /**

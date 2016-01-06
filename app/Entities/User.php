@@ -1,6 +1,6 @@
 <?php
 
-namespace AcessoProject;
+namespace AcessoProject\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

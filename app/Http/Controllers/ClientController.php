@@ -2,22 +2,39 @@
 
 namespace AcessoProject\Http\Controllers;
 
-use Illuminate\Http\Request;
 
-use AcessoProject\Http\Requests;
-use AcessoProject\Http\Controllers\Controller;
-use AcessoProject\Client;
+use AcessoProject\Http\Requests\ClientRequest;
+use AcessoProject\Repositories\ClientRepository;
+use AcessoProject\Services\ClientService;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+
+
+    /**
+     * @var ClientRepository
+     */
+    private $clientRepository;
+    /**
+     * @var ClientService
+     */
+    private $clientService;
+
+    public function __construct(ClientRepository $clientRepository,ClientService $clientService)
+    {
+        $this->clientRepository = $clientRepository;
+        $this->clientService = $clientService;
+    }
     public function index()
     {
-        return Client::all();
+        return $this->clientRepository->all();
     }
 
-
-    public function store(Request $request)
+    public function store(ClientRequest $clientRequest)
     {
-        return Client::create($request->all());
+        $data = $clientRequest->all();
+        return $this->clientService->create($data);
+
     }
 }

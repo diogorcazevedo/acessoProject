@@ -15,11 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('client', 'ClientController@index');
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 | API ROUTE
@@ -34,6 +29,7 @@ Route::get('client', 'ClientController@index');
 Route::group(['middleware' => ['api']], function () {
 
     Route::post('client', 'ClientController@store');
+    Route::get('client', 'ClientController@index');
 
 });
 
