@@ -21,7 +21,9 @@ class ClientController extends Controller
      */
     private $clientService;
 
-    public function __construct(ClientRepository $clientRepository,ClientService $clientService)
+    public function __construct(
+                                ClientRepository $clientRepository,
+                                ClientService $clientService)
     {
         $this->clientRepository = $clientRepository;
         $this->clientService = $clientService;
@@ -31,10 +33,32 @@ class ClientController extends Controller
         return $this->clientRepository->all();
     }
 
-    public function store(ClientRequest $clientRequest)
+    public function store(Request $request)
     {
-        $data = $clientRequest->all();
-        return $this->clientService->create($data);
+
+        return $this->clientService->create($request->all());
+
+    }
+
+
+    public function show($id)
+    {
+
+        return $this->clientRepository->find($id);
+
+    }
+
+    public function update(Request $request,$id)
+    {
+
+        return $this->clientService->update($request->all(),$id);
+
+    }
+
+    public function destroy($id)
+    {
+
+        return $this->clientRepository->delete($id);
 
     }
 }
