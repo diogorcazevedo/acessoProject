@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => AcessoProject\User::class,
+            'model' => AcessoProject\Entities\User::class,
         ],
 
         // 'users' => [

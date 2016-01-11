@@ -11,11 +11,9 @@ namespace AcessoProject\Services;
 
 
 use AcessoProject\Http\Requests\Client;
-use AcessoProject\Http\Requests\ClientRequest;
 use AcessoProject\Repositories\ClientRepository;
 use AcessoProject\Validators\ClientValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
-use Prettus\Validator\LaravelValidator;
 
 
 class ClientService
