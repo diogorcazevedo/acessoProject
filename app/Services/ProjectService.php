@@ -14,6 +14,8 @@ namespace AcessoProject\Services;
 
 use AcessoProject\Repositories\ProjectRepository;
 use AcessoProject\Validators\ProjectValidator;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 
@@ -71,4 +73,14 @@ class ProjectService
         }
     }
 
+    public function createFile(array $data)
+    {
+
+        $project = $this->projectRepository->skipPresenter()->find($data['project_id']);
+        $projectFile = $project->files()->create($data);
+
+        Storage::put($projectFile->id.".".$data['extension'],File::get($data['file']));
+
+
+    }
 }
